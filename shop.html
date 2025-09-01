@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - EcoMarket</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-brand">
+                <img src="/Untitled design (1).png" alt="EcoMarket Logo" class="logo">
+                <span class="brand-name">EcoMarket</span>
+            </div>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="shop.html" class="nav-link active">Shop</a>
+                <a href="soon.html" class="nav-link">Rentals</a> 
+                <!--<a href="offers.html" class="nav-link">Special Offers</a> -->
+                <!--<a href="contributor.html" class="nav-link">Contributors</a> -->
+                <a href="donate.html" class="nav-link">Donate</a>
+                <a href="about.html" class="nav-link">About Us</a>
+                <!--<a href="contact.html" class="nav-link">Contact</a> -->
+            </nav>
+            
+            <div class="header-actions">
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb-container">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html"><i class="fas fa-home"></i> Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <span class="breadcrumb-current">Shop</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Shop Page Content -->
+    <div class="shop-container">
+        <div class="container">
+            <div class="shop-layout">
+                
+                <!-- Filters Sidebar -->
+                <aside class="filters-sidebar">
+                    <div class="filter-section">
+                        <h3 class="filter-title">Categories</h3>
+                        <div class="filter-options">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="all" id="categoryAll" checked>
+                                <span class="checkmark"></span>
+                                All Categories
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="accessories" class="category-filter">
+                                <span class="checkmark"></span>
+                                Accessories
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="souvenirs" class="category-filter">
+                                <span class="checkmark"></span>
+                                Souvenirs
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="home-decor" class="category-filter">
+                                <span class="checkmark"></span>
+                                Home Décor
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="jewelry" class="category-filter">
+                                <span class="checkmark"></span>
+                                Jewelry
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="bags" class="category-filter">
+                                <span class="checkmark"></span>
+                                Bags & Pouches
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="stationery" class="category-filter">
+                                <span class="checkmark"></span>
+                                Stationery
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="home-utility" class="category-filter">
+                                <span class="checkmark"></span>
+                                Home Utility
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="games" class="category-filter">
+                                <span class="checkmark"></span>
+                                Games & Toys
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="apparel" class="category-filter">
+                                <span class="checkmark"></span>
+                                Apparel
+                            </label>
+                        </div>
+                    </div>
+
+                    <!--<div class="filter-section">
+                        <h3 class="filter-title">Price Range</h3>
+                        <div class="price-range">
+                            <div class="price-inputs">
+                                <input type="number" id="minPrice" placeholder="Min" min="0">
+                                <span>-</span>
+                                <input type="number" id="maxPrice" placeholder="Max" min="0">
+                            </div>
+                            <div class="price-slider">
+                                <input type="range" id="priceSlider" min="0" max="1000" value="500">
+                                <div class="slider-value">₹0 - ₹<span id="sliderValue">500</span></div>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div class="filter-section">
+                        <h3 class="filter-title">Material Type</h3>
+                        <div class="filter-options">
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="mixed" class="material-filter">
+                                <span class="checkmark"></span>
+                                Mixed
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="fabric" class="material-filter">
+                                <span class="checkmark"></span>
+                                Fabric
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="metal" class="material-filter">
+                                <span class="checkmark"></span>
+                                Metal 
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="jute" class="material-filter">
+                                <span class="checkmark"></span>
+                                Jute
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="paper" class="material-filter">
+                                <span class="checkmark"></span>
+                                Paper
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="ceramic" class="material-filter">
+                                <span class="checkmark"></span>
+                                Ceramic
+                            </label>
+                            <label class="filter-checkbox">
+                                <input type="checkbox" value="plastic" class="material-filter">
+                                <span class="checkmark"></span>
+                                Plastic
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <h3 class="filter-title">Sort By</h3>
+                        <select id="sortBy" class="sort-select">
+                            <option value="newest">New Arrivals</option>
+                            <option value="popular">Best Sellers</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Highest Rated</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-actions">
+                        <button class="btn btn-outline" id="clearFilters">
+                            <i class="fas fa-times"></i>
+                            Clear All
+                        </button>
+                    </div>
+
+                </aside>
+
+                <!-- Main Content -->
+                <main class="shop-main">
+                    <!-- Shop Header -->
+                    <div class="shop-header">
+                        <h1 class="shop-title">Sustainable Products</h1>
+                        <p class="shop-subtitle">Discover eco-friendly items that make a difference</p>
+                        <div class="shop-stats">
+                            <span class="results-count">Showing <span id="resultsCount">0</span> products</span>
+                            <div class="view-toggles">
+                                <button class="view-toggle active" data-view="grid">
+                                    <i class="fas fa-th-large"></i>
+                                </button>
+                                <button class="view-toggle" data-view="list">
+                                    <i class="fas fa-list"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <section class="products-section">
+                        <div class="products-grid" id="productsGrid">
+                            <!-- Products will be loaded here -->
+                        </div>
+                    </section>
+
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <div class="shop-notice-overlay" id="shopNoticeOverlay">
+    <div class="shop-notice-popup">
+        <div class="shop-notice-header">
+            <div class="notice-icon">
+                <i class="fas fa-store"></i>
+            </div>
+            <button class="shop-notice-close" id="shopNoticeClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="shop-notice-content">
+            <h2 class="shop-notice-title">Shop Currently Unavailable</h2>
+            <p class="shop-notice-message">
+                We're sorry, but our online shop functionality is temporarily not available. 
+                To purchase any of our amazing sustainable products, please visit us at the school location.
+            </p>
+            <div class="shop-notice-info">
+                <div class="notice-info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Visit our physical store at the school</span>
+                </div>
+                <div class="notice-info-item">
+                    <i class="fas fa-leaf"></i>
+                    <span>All products are eco-friendly & sustainable</span>
+                </div>
+            </div>
+            <div class="shop-notice-actions">
+                <button class="btn btn-primary shop-notice-understood" id="shopNoticeUnderstood">
+                    <i class="fas fa-check"></i>
+                    Got it, thanks!
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Quick View Modal -->
+    <div class="modal quick-view-modal" id="quickViewModal">
+        <div class="modal-content quick-view-content">
+            <span class="modal-close" onclick="closeQuickView()">&times;</span>
+            <div class="quick-view-body" id="quickViewBody">
+                <!-- Quick view content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="/Untitled design (1).png" alt="EcoMarket Logo" class="footer-logo">
+                        <span class="footer-brand-name">EcoMarket</span>
+                    </div>
+                    <p class="footer-description">
+                        Creating a sustainable future through conscious consumption and community collaboration.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/OPGWORLDSCHOOLDWARKA/" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="https://x.com/WorldOpg" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/opgworldschool001/?hl=en" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/opg-world-school-dwarka" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="soon.html">Rentals</a></li>
+                        <!--<li><a href="#offers">Special Offers</a></li> -->
+                    </ul>
+                </div>
+                
+                <!--<div class="footer-section">
+                    <h4>Community</h4>
+                    <ul class="footer-links">
+                        <li><a href="#contributors">Contributors</a></li>
+                        <li><a href="#donate">Donate</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div> -->
+
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showModal('faq')">FAQs</a></li>
+                        <li><a href="#" onclick="showModal('shipping')">Shipping & Returns</a></li>
+                        <li><a href="#" onclick="showModal('privacy')">Privacy Policy</a></li>
+                        <li><a href="#" onclick="showModal('terms')">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                
+                <!--<div class="footer-section">
+                    <h4>Stay Updated</h4>
+                    <p>Subscribe to our newsletter for the latest sustainable deals and eco-tips.</p>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <input type="email" placeholder="Enter your email" class="newsletter-input" required>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-envelope"></i>
+                        </button>
+                    </form>
+                </div> -->
+                <div class="footer-section school-branding">
+    <div class="school-logo-placeholder">
+        <div class="placeholder-box">
+            <span>[School Logo]</span>
+        </div>
+    </div>
+    <p class="school-motto">
+        Proudly representing OPG World School—where values meet vision
+    </p>
+</div>
+
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 EcoMarket. All rights reserved. | Building a sustainable future together.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="shop.js"></script>
+</body>
+</html>

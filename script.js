@@ -3,68 +3,68 @@ const mockData = {
     featuredItems: [
         {
             id: 1,
-            title: "Vintage Wooden Chair",
-            description: "Beautifully restored vintage wooden chair with unique character and sustainable materials.",
-            price: 89.99,
+            title: "Magnetic Wooden Chess Set",
+            description: "Experience the timeless game of chess anywhere you go with this portable magnetic chess set. Crafted with smooth, hand-polished wooden pieces, each fitted with a discreet magnetic base to keep them securely in place—even during bumpy journeys or windy days outdoors. The foldable wooden board doubles as a storage box, neatly housing all pieces when not in use, making it easy to slip into a backpack or carry-on. Ideal for quick matches, practice sessions, or sharpening your strategy on the go, this set combines classic elegance with modern portability. Whether you’re a beginner or a seasoned player, it’s your perfect companion for travel, picnics, coffee breaks, or rainy afternoons indoors.",
+            price: 300,
             condition: "Excellent",
             category: "furniture",
-            image: "https://images.unsplash.com/photo-1506439773649-6e0eb8cfb237?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            contributor: "Sarah Johnson",
+            image: "/img/chess.jpg",
+            //contributor: "Sarah Johnson",
             dateAdded: "2024-01-15"
         },
         {
             id: 2,
-            title: "Upcycled Bookshelf",
-            description: "Creative bookshelf made from reclaimed wood and industrial materials.",
-            price: 149.99,
+            title: "Upcycled Fabric Bangles",
+            description: "Add a splash of sustainable style to your look with these colorful bangles, beautifully handcrafted from upcycled fabric. Each piece is made using carefully selected textile remnants, giving new life to materials that would otherwise go to waste. The result is a collection of one-of-a-kind accessories, each with its own unique blend of colors, textures, and patterns. Lightweight and comfortable to wear, these bangles slip on effortlessly, making them perfect for everyday outfits or special occasions. Whether you stack them for a bold, eclectic vibe or wear just one for a subtle pop of charm, they’re a statement in both fashion and eco-conscious living. Ideal for those who value creativity, sustainability, and individuality, these bangles prove that style can be both beautiful and kind to the planet.",
+            price: 50,
             condition: "Like New",
             category: "furniture",
-            image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            contributor: "Mike Chen",
+            image: "/img/bangles.jpg",
+            //contributor: "Mike Chen",
             dateAdded: "2024-01-20"
         },
         {
             id: 3,
-            title: "Handmade Ceramic Vase",
-            description: "Artisan-crafted ceramic vase perfect for sustainable home decoration.",
-            price: 34.99,
+            title: "Tie-Dye Fabric Pouches",
+            description: " Brighten up your everyday essentials with these colorful pouches, lovingly crafted from vibrant tie-dye fabric. Each pouch boasts a unique swirl of colors, ensuring no two are exactly alike. Compact yet spacious, they’re perfect for storing coins, keys, cosmetics, stationery, or other small treasures you want to keep organized. The soft fabric is both lightweight and durable, making them easy to slip into a handbag, backpack, or travel case. A sturdy zipper closure keeps your items secure, while the lively tie-dye design adds a fun, artistic touch to your day. Ideal for gifting or personal use, these pouches bring together functionality, style, and a pop of bohemian charm.",
+            price: 100,
             condition: "New",
             category: "home-decor",
-            image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            contributor: "Emily Rodriguez",
+            image: "/img/pouches.jpg",
+            //contributor: "Emily Rodriguez",
             dateAdded: "2024-01-25"
         },
         {
             id: 4,
-            title: "Refurbished Laptop",
-            description: "High-quality refurbished laptop with extended warranty and reduced environmental impact.",
-            price: 399.99,
+            title: "Handcrafted Envelopes",
+            description: " Elevate your gifting experience with these artistic paper envelopes, each adorned with unique hand-painted and printed designs. Crafted with care and creativity, every envelope is a small work of art, blending vibrant colors, intricate patterns, and thoughtful detailing. Perfect for weddings, festivals, birthdays, or heartfelt notes, they add a personal, artisanal touch to any occasion. Made from high-quality paper, they are both sturdy and elegant, ensuring your gift or message is beautifully presented. Whether used to hold cash, gift cards, or handwritten letters, these envelopes turn even the simplest gesture into a memorable keepsake.",
+            price: 50,
             condition: "Very Good",
             category: "electronics",
-            image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            contributor: "Tech Renewals Inc.",
+            image: "/img/envelope.jpg",
+            //contributor: "Tech Renewals Inc.",
             dateAdded: "2024-01-30"
         },
         {
             id: 5,
-            title: "Organic Cotton Tote Bag",
-            description: "Eco-friendly tote bag made from 100% organic cotton with beautiful hand-printed design.",
-            price: 24.99,
+            title: "Assorted Neckties",
+            description: "Make a lasting impression with this collection of elegant printed neckties, available in a variety of colors and patterns to suit any style. Crafted from smooth, high-quality fabric, each tie drapes beautifully and features crisp, vibrant prints that add character without compromising sophistication. Perfect for both formal and semi-formal occasions, they pair effortlessly with dress shirts and suits, elevating your look for business meetings, weddings, parties, or special events. Whether you prefer classic stripes, subtle geometrics, or bold statement prints, this collection offers a tie for every mood and moment, ensuring you step out with confidence and refined style.",
+            price: 100,
             condition: "New",
             category: "accessories",
-            image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            contributor: "Green Threads Co.",
+            image: "/img/tie.jpg",
+            //contributor: "Green Threads Co.",
             dateAdded: "2024-02-05"
         },
         {
             id: 6,
-            title: "Reclaimed Wood Coffee Table",
-            description: "Stunning coffee table crafted from reclaimed barn wood with industrial metal legs.",
-            price: 199.99,
+            title: "Block-Printed Jute Pouches",
+            description: "Celebrate sustainability and tradition with these eco-friendly jute pouches, adorned with beautiful hand block-printed designs. Crafted from sturdy, biodegradable jute, each pouch combines rustic charm with cultural artistry, making it both practical and stylish. Perfect for storing jewelry, small accessories, stationery, or cosmetics, they’re also an elegant choice for eco-conscious gift wrapping. The breathable, durable material ensures long-lasting use, while the intricate prints bring a touch of heritage to your everyday essentials. Whether for personal use, festive gifting, or event favors, these pouches offer a perfect blend of functionality, craftsmanship, and environmental care.",
+            price: 100,
             condition: "Excellent",
             category: "furniture",
-            image: "https://images.unsplash.com/photo-1549497538-303791108f95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
-            contributor: "Rustic Creations",
+            image: "/img/puches.jpg",
+            //contributor: "Rustic Creations",
             dateAdded: "2024-02-10"
         }
     ],
@@ -229,7 +229,7 @@ function displayItems(items) {
                 <h3 class="item-title">${item.title}</h3>
                 <p class="item-description">${item.description}</p>
                 <div class="item-meta">
-                    <span class="item-price">$${item.price}</span>
+                    <span class="item-price">₹${item.price}</span>
                     <span class="item-condition">${item.condition}</span>
                 </div>
                 <button class="btn btn-primary" onclick="viewItem(${item.id})">
@@ -273,7 +273,7 @@ function loadContributors() {
                     <div class="contribution-label">Donations</div>
                 </div>
                 <div>
-                    <div class="contribution-count">$${contributor.totalValue}</div>
+                    <div class="contribution-count">₹${contributor.totalValue}</div>
                     <div class="contribution-label">Total Value</div>
                 </div>
             </div>
@@ -341,7 +341,7 @@ function viewItem(itemId) {
         const modalContent = `
             <h2>${item.title}</h2>
             <img src="${item.image}" alt="${item.title}" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px; margin: 1rem 0;">
-            <p><strong>Price:</strong> $${item.price}</p>
+            <p><strong>Price:</strong> ₹${item.price}</p>
             <p><strong>Condition:</strong> ${item.condition}</p>
             <p><strong>Category:</strong> ${item.category}</p>
             <p><strong>Contributor:</strong> ${item.contributor}</p>
@@ -664,3 +664,349 @@ function updateCartBadge() {
 
 // Call updateCartBadge on page load
 document.addEventListener('DOMContentLoaded', updateCartBadge);
+
+
+// Enhanced JavaScript for Donate Page Animations and Interactions
+
+// Donation-specific functionality
+const donationFeatures = {
+    // Counter animations for statistics
+    animateCounters: function() {
+        const counters = document.querySelectorAll('.stat-number');
+        const speed = 200;
+
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target') || +counter.innerText.replace(/[^0-9]/g, '');
+                const count = +counter.innerText.replace(/[^0-9]/g, '');
+                const inc = target / speed;
+
+                if(count < target) {
+                    counter.innerText = Math.ceil(count + inc).toLocaleString();
+                    setTimeout(updateCount, 1);
+                } else {
+                    counter.innerText = target.toLocaleString();
+                }
+            };
+            updateCount();
+        });
+    },
+
+    // Animate elements on scroll
+    setupScrollAnimations: function() {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    
+                    // Trigger counter animation for stats
+                    if (entry.target.classList.contains('header-stats')) {
+                        setTimeout(() => this.animateCounters(), 500);
+                    }
+                    
+                    // Add staggered animation for material categories
+                    if (entry.target.classList.contains('materials-grid')) {
+                        const categories = entry.target.querySelectorAll('.material-category');
+                        categories.forEach((category, index) => {
+                            setTimeout(() => {
+                                category.style.animation = `bounceIn 0.8s ease-out both`;
+                            }, index * 100);
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe key elements
+        const elementsToObserve = [
+            '.donate-header',
+            '.header-stats',
+            '.materials-grid',
+            '.donation-guidelines',
+            '.process-timeline',
+            '.locations-container'
+        ];
+
+        elementsToObserve.forEach(selector => {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(el => observer.observe(el));
+        });
+    },
+
+    // Enhanced material category interactions
+    setupMaterialInteractions: function() {
+        const materialCategories = document.querySelectorAll('.material-category');
+        
+        materialCategories.forEach(category => {
+            const categoryIcon = category.querySelector('.category-icon');
+            const materialItems = category.querySelectorAll('.material-item');
+            
+            // Add hover effects
+            category.addEventListener('mouseenter', () => {
+                categoryIcon.style.animation = 'pulse 0.5s ease-in-out';
+                materialItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.transform = 'translateX(5px)';
+                    }, index * 50);
+                });
+            });
+            
+            category.addEventListener('mouseleave', () => {
+                categoryIcon.style.animation = 'pulse 2s ease-in-out infinite';
+                materialItems.forEach(item => {
+                    item.style.transform = 'translateX(0)';
+                });
+            });
+        });
+    },
+
+    // Interactive statistics with hover effects
+    setupStatisticsInteractions: function() {
+        const statHighlights = document.querySelectorAll('.stat-highlight');
+        
+        statHighlights.forEach(stat => {
+            const statNumber = stat.querySelector('.stat-number');
+            const originalNumber = statNumber.textContent;
+            
+            stat.addEventListener('mouseenter', () => {
+                stat.style.animation = 'none';
+                stat.style.transform = 'translateY(-10px) scale(1.05)';
+                
+                // Add sparkle effect
+                this.addSparkleEffect(stat);
+            });
+            
+            stat.addEventListener('mouseleave', () => {
+                stat.style.transform = 'translateY(0) scale(1)';
+                this.removeSparkleEffect(stat);
+            });
+        });
+    },
+
+    // Add sparkle animation effect
+    addSparkleEffect: function(element) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle-effect';
+        sparkle.style.cssText = `
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, #22c55e, transparent);
+            border-radius: 50%;
+            opacity: 0;
+            animation: sparkle 1s ease-in-out infinite;
+            pointer-events: none;
+        `;
+        
+        element.appendChild(sparkle);
+    },
+
+    // Remove sparkle effect
+    removeSparkleEffect: function(element) {
+        const sparkle = element.querySelector('.sparkle-effect');
+        if (sparkle) {
+            sparkle.remove();
+        }
+    },
+
+    // Enhanced button interactions
+    setupButtonInteractions: function() {
+        const buttons = document.querySelectorAll('.btn');
+        
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                button.style.transform = 'translateY(-2px) scale(1.02)';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            button.addEventListener('click', (e) => {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = button.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+                
+                button.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+    },
+
+    // Initialize all donation page features
+    init: function() {
+        // Wait for DOM to be fully loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                this.setupScrollAnimations();
+                this.setupMaterialInteractions();
+                this.setupStatisticsInteractions();
+                this.setupButtonInteractions();
+            });
+        } else {
+            this.setupScrollAnimations();
+            this.setupMaterialInteractions();
+            this.setupStatisticsInteractions();
+            this.setupButtonInteractions();
+        }
+    }
+};
+
+// Additional CSS animations via JavaScript
+const additionalStyles = `
+    @keyframes sparkle {
+        0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+        50% { opacity: 1; transform: scale(1) rotate(180deg); }
+    }
+    
+    @keyframes ripple {
+        to { transform: scale(4); opacity: 0; }
+    }
+    
+    .animate-in {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+`;
+
+// Inject additional styles
+const styleSheet = document.createElement('style');
+styleSheet.textContent = additionalStyles;
+document.head.appendChild(styleSheet);
+
+// Initialize donation page features
+donationFeatures.init();
+
+// Initialize the application
+document.addEventListener('DOMContentLoaded', function() {
+    initializeTheme();
+    setupEventListeners();
+    loadFeaturedItems();
+    loadContributors();
+    setupSmoothScrolling();
+    setupScrollAnimations();
+    setupMissionAnimations();
+});
+
+// Scroll Animations
+function setupScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in-up');
+            }
+        });
+    }, observerOptions);
+    
+    // Observe all sections
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+}
+
+// Mission Section Animations
+function setupMissionAnimations() {
+    const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Add animation class to mission section
+                entry.target.classList.add('mission-animate');
+                
+                // Trigger counter animations for mission stats
+                if (entry.target.classList.contains('mission')) {
+                    setTimeout(() => {
+                        animateMissionCounters();
+                    }, 500);
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // Observe mission section
+    const missionSection = document.querySelector('.mission');
+    if (missionSection) {
+        observer.observe(missionSection);
+    }
+}
+
+// Animate Mission Counter Numbers
+function animateMissionCounters() {
+    const counters = document.querySelectorAll('.mission-stats-block .stat-number');
+    const speed = 200;
+
+    counters.forEach((counter, index) => {
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText.replace(/[^0-9]/g, '');
+            const inc = target / speed;
+
+            if (count < target) {
+                const newCount = Math.ceil(count + inc);
+                
+                // Format the number based on the target value
+                if (target >= 100000) {
+                    counter.innerText = (newCount / 1000).toFixed(0) + 'K';
+                } else if (target >= 1000) {
+                    counter.innerText = (newCount / 1000).toFixed(1) + 'K';
+                } else {
+                    counter.innerText = newCount.toLocaleString();
+                }
+                
+                setTimeout(updateCount, 1);
+            } else {
+                // Final formatting
+                if (target >= 100000) {
+                    counter.innerText = (target / 1000).toFixed(0) + 'K';
+                } else if (target >= 1000) {
+                    counter.innerText = (target / 1000).toFixed(1) + 'K';
+                } else {
+                    counter.innerText = target.toLocaleString();
+                }
+                
+                // Add completion animation
+                counter.parentElement.classList.add('counter-complete');
+            }
+        };
+        
+        // Start animation with a stagger effect
+        setTimeout(() => {
+            updateCount();
+        }, index * 100);
+    });
+}
