@@ -174,26 +174,29 @@ function updateThemeToggle() {
 
 // Event Listeners Setup
 function setupEventListeners() {
-    // Theme toggle
-    document.getElementById('themeToggle').addEventListener('click', toggleTheme);
-    
-    // Mobile menu toggle
-    document.getElementById('mobileMenuToggle').addEventListener('click', toggleMobileMenu);
-    
-    // Search functionality
-    document.getElementById('searchInput').addEventListener('input', handleSearch);
-    
-    // Form submissions
-    document.getElementById('donationForm').addEventListener('submit', handleDonationSubmit);
-    document.getElementById('newsletterForm').addEventListener('submit', handleNewsletterSubmit);
-    
-    // Close modal when clicking outside
-    document.getElementById('modal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeModal();
-        }
-    });
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    if (mobileMenuToggle) mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) searchInput.addEventListener('input', handleSearch);
+
+    const donationForm = document.getElementById('donationForm');
+    if (donationForm) donationForm.addEventListener('submit', handleDonationSubmit);
+
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) newsletterForm.addEventListener('submit', handleNewsletterSubmit);
+
+    const modal = document.getElementById('modal');
+    if (modal) {
+        modal.addEventListener('click', function (e) {
+            if (e.target === this) closeModal();
+        });
+    }
 }
+
 
 // Mobile Menu
 function toggleMobileMenu() {
@@ -1010,3 +1013,4 @@ function animateMissionCounters() {
         }, index * 100);
     });
 }
+
