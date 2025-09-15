@@ -154,8 +154,11 @@ function toggleTheme() {
 
 function updateThemeToggle() {
     const themeToggle = document.getElementById('themeToggle');
+    if (!themeToggle) return;  // exit if button not on this page
+
     const icon = themeToggle.querySelector('i');
-    
+    if (!icon) return;
+
     if (currentTheme === 'dark') {
         icon.className = 'fas fa-sun';
     } else {
