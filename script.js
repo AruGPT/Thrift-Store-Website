@@ -154,65 +154,71 @@ function toggleTheme() {
 
 function updateThemeToggle() {
     const themeToggle = document.getElementById('themeToggle');
-    if (!themeToggle) return;  // exit if button not on this page
-
-    const icon = themeToggle.querySelector('i');
-    if (!icon) return;
-
-    if (currentTheme === 'dark') {
-        icon.className = 'fas fa-sun';
-    } else {
-        icon.className = 'fas fa-moon';
+    if (themeToggle) {
+        const icon = themeToggle.querySelector('i');
+        if (icon) {
+            if (currentTheme === 'dark') {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
     }
 }
 
 // Event Listeners Setup
 function setupEventListeners() {
-    // Theme toggle
-    const themeToggle = document.getElementById('themeToggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', toggleTheme);
-    }
+    try {
+        // Theme toggle
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle && typeof themeToggle.addEventListener === 'function') {
+            themeToggle.addEventListener('click', toggleTheme);
+        }
 
-    // Mobile menu toggle
-    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-    if (mobileMenuToggle) {
-        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-    }
+        // Mobile menu toggle
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        if (mobileMenuToggle && typeof mobileMenuToggle.addEventListener === 'function') {
+            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        }
 
-    // Search functionality
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-        searchInput.addEventListener('input', handleSearch);
-    }
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput && typeof searchInput.addEventListener === 'function') {
+            searchInput.addEventListener('input', handleSearch);
+        }
 
-    // Donation form
-    const donationForm = document.getElementById('donationForm');
-    if (donationForm) {
-        donationForm.addEventListener('submit', handleDonationSubmit);
-    }
+        // Donation form
+        const donationForm = document.getElementById('donationForm');
+        if (donationForm && typeof donationForm.addEventListener === 'function') {
+            donationForm.addEventListener('submit', handleDonationSubmit);
+        }
 
-    // Newsletter form
-    const newsletterForm = document.getElementById('newsletterForm');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', handleNewsletterSubmit);
-    }
+        // Newsletter form
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm && typeof newsletterForm.addEventListener === 'function') {
+            newsletterForm.addEventListener('submit', handleNewsletterSubmit);
+        }
 
-    // Modal
-    const modal = document.getElementById('modal');
-    if (modal) {
-        modal.addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
+        // Modal
+        const modal = document.getElementById('modal');
+        if (modal && typeof modal.addEventListener === 'function') {
+            modal.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+        }
+    } catch (error) {
+        console.error('Error setting up event listeners:', error);
     }
 }
 
 // Mobile Menu
 function toggleMobileMenu() {
     const navMenu = document.getElementById('navMenu');
-    navMenu.classList.toggle('active');
+    if (navMenu) {
+        navMenu.classList.toggle('active');
+    }
 }
 
 // Search Functionality
@@ -460,7 +466,9 @@ function becomeContributor() {
     
     // Add event listener for the form
     setTimeout(() => {
-        document.getElementById('contributorForm').addEventListener('submit', function(e) {
+        const contributorForm = document.getElementById('contributorForm');
+        if (contributorForm) {
+            contributorForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(e.target);
             const contributorData = {
@@ -478,7 +486,8 @@ function becomeContributor() {
             
             showToast('Welcome to our contributor community!', 'success');
             closeModal();
-        });
+            });
+        }
     }, 100);
 }
 
