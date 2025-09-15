@@ -138,15 +138,6 @@ let currentItemsPage = 0;
 const itemsPerPage = 6;
 let allItems = [...mockData.featuredItems];
 
-// Initialize the application
-document.addEventListener('DOMContentLoaded', function() {
-    initializeTheme();
-    setupEventListeners();
-    loadFeaturedItems();
-    loadContributors();
-    setupSmoothScrolling();
-    setupScrollAnimations();
-});
 
 // Theme Management
 function initializeTheme() {
@@ -682,10 +673,6 @@ function updateCartBadge() {
     }
 }
 
-// Call updateCartBadge on page load
-document.addEventListener('DOMContentLoaded', updateCartBadge);
-
-
 // Enhanced JavaScript for Donate Page Animations and Interactions
 
 // Donation-specific functionality
@@ -923,7 +910,6 @@ document.head.appendChild(styleSheet);
 // Initialize donation page features
 donationFeatures.init();
 
-// Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
     initializeTheme();
     setupEventListeners();
@@ -932,6 +918,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupSmoothScrolling();
     setupScrollAnimations();
     setupMissionAnimations();
+    updateCartBadge(); // moved here
 });
 
 // Scroll Animations
