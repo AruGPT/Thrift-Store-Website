@@ -173,30 +173,40 @@ function setupEventListeners() {
         const themeToggle = document.getElementById('themeToggle');
         if (themeToggle && typeof themeToggle.addEventListener === 'function') {
             themeToggle.addEventListener('click', toggleTheme);
+        } else if (!themeToggle) {
+            console.error('Element with ID "themeToggle" not found.');
         }
 
         // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
         if (mobileMenuToggle && typeof mobileMenuToggle.addEventListener === 'function') {
             mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+        } else if (!mobileMenuToggle) {
+            console.error('Element with ID "mobileMenuToggle" not found.');
         }
 
         // Search functionality
         const searchInput = document.getElementById('searchInput');
         if (searchInput && typeof searchInput.addEventListener === 'function') {
             searchInput.addEventListener('input', handleSearch);
+        } else if (!searchInput) {
+            console.error('Element with ID "searchInput" not found.');
         }
 
         // Donation form
         const donationForm = document.getElementById('donationForm');
         if (donationForm && typeof donationForm.addEventListener === 'function') {
             donationForm.addEventListener('submit', handleDonationSubmit);
+        } else if (!donationForm) {
+            console.error('Element with ID "donationForm" not found.');
         }
 
         // Newsletter form
         const newsletterForm = document.getElementById('newsletterForm');
         if (newsletterForm && typeof newsletterForm.addEventListener === 'function') {
             newsletterForm.addEventListener('submit', handleNewsletterSubmit);
+        } else if (!newsletterForm) {
+            console.error('Element with ID "newsletterForm" not found.');
         }
 
         // Modal
@@ -207,6 +217,8 @@ function setupEventListeners() {
                     closeModal();
                 }
             });
+        } else if (!modal) {
+            console.error('Element with ID "modal" not found.');
         }
     } catch (error) {
         console.error('Error setting up event listeners:', error);
@@ -615,15 +627,25 @@ function showToast(message, type = 'info') {
 
 // Smooth Scrolling
 function setupSmoothScrolling() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    const anchors = document.querySelectorAll('a[href^="#"]');
+    if (anchors.length === 0) {
+        console.error('No anchor links with href starting with "#" found for smooth scrolling.');
+        return;
+    }
+    
+    anchors.forEach((anchor, index) => {
         if (anchor && typeof anchor.addEventListener === 'function') {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     target.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    console.error(`Target element for anchor link not found: ${this.getAttribute('href')}`);
                 }
             });
+        } else {
+            console.error(`Anchor element at index ${index} is null or doesn't support addEventListener.`);
         }
     });
 }
