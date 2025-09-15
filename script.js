@@ -467,7 +467,7 @@ function becomeContributor() {
     // Add event listener for the form
     setTimeout(() => {
         const contributorForm = document.getElementById('contributorForm');
-        if (contributorForm) {
+        if (contributorForm && typeof contributorForm.addEventListener === 'function') {
             contributorForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(e.target);
@@ -616,13 +616,15 @@ function showToast(message, type = 'info') {
 // Smooth Scrolling
 function setupSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        });
+        if (anchor && typeof anchor.addEventListener === 'function') {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
     });
 }
 
@@ -762,25 +764,35 @@ const donationFeatures = {
         const materialCategories = document.querySelectorAll('.material-category');
         
         materialCategories.forEach(category => {
-            const categoryIcon = category.querySelector('.category-icon');
-            const materialItems = category.querySelectorAll('.material-item');
-            
-            // Add hover effects
-            category.addEventListener('mouseenter', () => {
-                categoryIcon.style.animation = 'pulse 0.5s ease-in-out';
-                materialItems.forEach((item, index) => {
-                    setTimeout(() => {
-                        item.style.transform = 'translateX(5px)';
-                    }, index * 50);
+            if (category && typeof category.addEventListener === 'function') {
+                const categoryIcon = category.querySelector('.category-icon');
+                const materialItems = category.querySelectorAll('.material-item');
+                
+                // Add hover effects
+                category.addEventListener('mouseenter', () => {
+                    if (categoryIcon) {
+                        categoryIcon.style.animation = 'pulse 0.5s ease-in-out';
+                    }
+                    materialItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            if (item) {
+                                item.style.transform = 'translateX(5px)';
+                            }
+                        }, index * 50);
+                    });
                 });
-            });
-            
-            category.addEventListener('mouseleave', () => {
-                categoryIcon.style.animation = 'pulse 2s ease-in-out infinite';
-                materialItems.forEach(item => {
-                    item.style.transform = 'translateX(0)';
+                
+                category.addEventListener('mouseleave', () => {
+                    if (categoryIcon) {
+                        categoryIcon.style.animation = 'pulse 2s ease-in-out infinite';
+                    }
+                    materialItems.forEach(item => {
+                        if (item) {
+                            item.style.transform = 'translateX(0)';
+                        }
+                    });
                 });
-            });
+            }
         });
     },
 
@@ -789,21 +801,23 @@ const donationFeatures = {
         const statHighlights = document.querySelectorAll('.stat-highlight');
         
         statHighlights.forEach(stat => {
-            const statNumber = stat.querySelector('.stat-number');
-            const originalNumber = statNumber.textContent;
-            
-            stat.addEventListener('mouseenter', () => {
-                stat.style.animation = 'none';
-                stat.style.transform = 'translateY(-10px) scale(1.05)';
+            if (stat && typeof stat.addEventListener === 'function') {
+                const statNumber = stat.querySelector('.stat-number');
+                const originalNumber = statNumber ? statNumber.textContent : '';
                 
-                // Add sparkle effect
-                this.addSparkleEffect(stat);
-            });
-            
-            stat.addEventListener('mouseleave', () => {
-                stat.style.transform = 'translateY(0) scale(1)';
-                this.removeSparkleEffect(stat);
-            });
+                stat.addEventListener('mouseenter', () => {
+                    stat.style.animation = 'none';
+                    stat.style.transform = 'translateY(-10px) scale(1.05)';
+                    
+                    // Add sparkle effect
+                    this.addSparkleEffect(stat);
+                });
+                
+                stat.addEventListener('mouseleave', () => {
+                    stat.style.transform = 'translateY(0) scale(1)';
+                    this.removeSparkleEffect(stat);
+                });
+            }
         });
     },
 
@@ -840,41 +854,45 @@ const donationFeatures = {
         const buttons = document.querySelectorAll('.btn');
         
         buttons.forEach(button => {
-            button.addEventListener('mouseenter', () => {
-                button.style.transform = 'translateY(-2px) scale(1.02)';
-            });
-            
-            button.addEventListener('mouseleave', () => {
-                button.style.transform = 'translateY(0) scale(1)';
-            });
-            
-            button.addEventListener('click', (e) => {
-                // Create ripple effect
-                const ripple = document.createElement('span');
-                const rect = button.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
+            if (button && typeof button.addEventListener === 'function') {
+                button.addEventListener('mouseenter', () => {
+                    button.style.transform = 'translateY(-2px) scale(1.02)';
+                });
                 
-                ripple.style.cssText = `
-                    position: absolute;
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}px;
-                    top: ${y}px;
-                    background: rgba(255, 255, 255, 0.3);
-                    border-radius: 50%;
-                    transform: scale(0);
-                    animation: ripple 0.6s linear;
-                    pointer-events: none;
-                `;
+                button.addEventListener('mouseleave', () => {
+                    button.style.transform = 'translateY(0) scale(1)';
+                });
                 
-                button.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
+                button.addEventListener('click', (e) => {
+                    // Create ripple effect
+                    const ripple = document.createElement('span');
+                    const rect = button.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        left: ${x}px;
+                        top: ${y}px;
+                        background: rgba(255, 255, 255, 0.3);
+                        border-radius: 50%;
+                        transform: scale(0);
+                        animation: ripple 0.6s linear;
+                        pointer-events: none;
+                    `;
+                    
+                    button.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        if (ripple && ripple.parentNode) {
+                            ripple.remove();
+                        }
+                    }, 600);
+                });
+            }
         });
     },
 
@@ -882,12 +900,14 @@ const donationFeatures = {
     init: function() {
         // Wait for DOM to be fully loaded
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                this.setupScrollAnimations();
-                this.setupMaterialInteractions();
-                this.setupStatisticsInteractions();
-                this.setupButtonInteractions();
-            });
+            if (document && typeof document.addEventListener === 'function') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    this.setupScrollAnimations();
+                    this.setupMaterialInteractions();
+                    this.setupStatisticsInteractions();
+                    this.setupButtonInteractions();
+                });
+            }
         } else {
             this.setupScrollAnimations();
             this.setupMaterialInteractions();
@@ -1029,5 +1049,3 @@ function animateMissionCounters() {
         }, index * 100);
     });
 }
-
-
