@@ -9,7 +9,7 @@ const mockData = {
             condition: "Excellent",
             category: "furniture",
             image: "/img/chess.jpg",
-            //contributor: "Sarah Johnson",
+            contributor: "Sarah Johnson",
             dateAdded: "2024-01-15"
         },
         {
@@ -1029,3 +1029,4 @@ function animateMissionCounters() {
         }, index * 100);
     });
 }
+
