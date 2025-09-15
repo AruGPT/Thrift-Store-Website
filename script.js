@@ -192,18 +192,19 @@ function setupEventListeners() {
         searchInput.addEventListener('input', handleSearch);
     }
 
-    // Form submissions
+    // Donation form
     const donationForm = document.getElementById('donationForm');
     if (donationForm) {
         donationForm.addEventListener('submit', handleDonationSubmit);
     }
 
+    // Newsletter form
     const newsletterForm = document.getElementById('newsletterForm');
     if (newsletterForm) {
         newsletterForm.addEventListener('submit', handleNewsletterSubmit);
     }
 
-    // Close modal when clicking outside
+    // Modal
     const modal = document.getElementById('modal');
     if (modal) {
         modal.addEventListener('click', function(e) {
