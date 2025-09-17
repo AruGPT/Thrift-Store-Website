@@ -169,59 +169,83 @@ function updateThemeToggle() {
 // Event Listeners Setup
 function setupEventListeners() {
     try {
+        console.log('Setting up event listeners...');
+        
         // Theme toggle
-        const themeToggle = document.getElementById('themeToggle');
-        if (themeToggle && typeof themeToggle.addEventListener === 'function') {
-            themeToggle.addEventListener('click', toggleTheme);
-        } else if (!themeToggle) {
-            console.error('Element with ID "themeToggle" not found.');
+        try {
+            const themeToggle = document.getElementById('themeToggle');
+            if (themeToggle && themeToggle.addEventListener && typeof themeToggle.addEventListener === 'function') {
+                themeToggle.addEventListener('click', toggleTheme);
+                console.log('Theme toggle listener added');
+            }
+        } catch (error) {
+            console.warn('Error setting up theme toggle:', error);
         }
 
         // Mobile menu toggle
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        if (mobileMenuToggle && typeof mobileMenuToggle.addEventListener === 'function') {
-            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
-        } else if (!mobileMenuToggle) {
-            console.error('Element with ID "mobileMenuToggle" not found.');
+        try {
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            if (mobileMenuToggle && mobileMenuToggle.addEventListener && typeof mobileMenuToggle.addEventListener === 'function') {
+                mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+                console.log('Mobile menu toggle listener added');
+            }
+        } catch (error) {
+            console.warn('Error setting up mobile menu toggle:', error);
         }
 
-        // Search functionality
-        const searchInput = document.getElementById('searchInput');
-        if (searchInput && typeof searchInput.addEventListener === 'function') {
-            searchInput.addEventListener('input', handleSearch);
-        } else if (!searchInput) {
-            console.error('Element with ID "searchInput" not found.');
+        // Search functionality (only if element exists)
+        try {
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput && searchInput.addEventListener && typeof searchInput.addEventListener === 'function') {
+                searchInput.addEventListener('input', handleSearch);
+                console.log('Search input listener added');
+            } else {
+                console.log('Search input not found - skipping (this is normal for pages without search)');
+            }
+        } catch (error) {
+            console.warn('Error setting up search functionality:', error);
         }
 
         // Donation form
-        const donationForm = document.getElementById('donationForm');
-        if (donationForm && typeof donationForm.addEventListener === 'function') {
-            donationForm.addEventListener('submit', handleDonationSubmit);
-        } else if (!donationForm) {
-            console.error('Element with ID "donationForm" not found.');
+        try {
+            const donationForm = document.getElementById('donationForm');
+            if (donationForm && typeof donationForm.addEventListener === 'function') {
+                donationForm.addEventListener('submit', handleDonationSubmit);
+                console.log('Donation form listener added');
+            }
+        } catch (error) {
+            console.warn('Error setting up donation form:', error);
         }
 
         // Newsletter form
-        const newsletterForm = document.getElementById('newsletterForm');
-        if (newsletterForm && typeof newsletterForm.addEventListener === 'function') {
-            newsletterForm.addEventListener('submit', handleNewsletterSubmit);
-        } else if (!newsletterForm) {
-            console.error('Element with ID "newsletterForm" not found.');
+        try {
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm && typeof newsletterForm.addEventListener === 'function') {
+                newsletterForm.addEventListener('submit', handleNewsletterSubmit);
+                console.log('Newsletter form listener added');
+            }
+        } catch (error) {
+            console.warn('Error setting up newsletter form:', error);
         }
 
         // Modal
-        const modal = document.getElementById('modal');
-        if (modal && typeof modal.addEventListener === 'function') {
-            modal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeModal();
-                }
-            });
-        } else if (!modal) {
-            console.error('Element with ID "modal" not found.');
+        try {
+            const modal = document.getElementById('modal');
+            if (modal && modal.addEventListener && typeof modal.addEventListener === 'function') {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        closeModal();
+                    }
+                });
+                console.log('Modal listener added');
+            }
+        } catch (error) {
+            console.warn('Error setting up modal:', error);
         }
+        
+        console.log('Event listeners setup completed');
     } catch (error) {
-        console.error('Error setting up event listeners:', error);
+        console.error('Critical error in setupEventListeners:', error);
     }
 }
 
@@ -247,30 +271,45 @@ function handleSearch(e) {
 
 // Load Featured Items
 function loadFeaturedItems() {
-    const itemsToShow = allItems.slice(0, (currentItemsPage + 1) * itemsPerPage);
-    displayItems(itemsToShow);
+    try {
+        const itemsToShow = allItems.slice(0, (currentItemsPage + 1) * itemsPerPage);
+        displayItems(itemsToShow);
+    } catch (error) {
+        console.error('Error loading featured items:', error);
+    }
 }
 
 function displayItems(items) {
-    const itemsGrid = document.getElementById('itemsGrid');
-    
-    itemsGrid.innerHTML = items.map(item => `
-        <div class="item-card fade-in-up">
-            <img src="${item.image}" alt="${item.title}" class="item-image">
-            <div class="item-info">
-                <h3 class="item-title">${item.title}</h3>
-                <p class="item-description">${item.description}</p>
-                <div class="item-meta">
-                    <span class="item-price">₹${item.price}</span>
-                    <span class="item-condition">${item.condition}</span>
+    try {
+        const itemsGrid = document.getElementById('itemsGrid');
+        
+        if (!itemsGrid) {
+            console.log('Items grid not found - skipping display (normal for pages without item grid)');
+            return;
+        }
+        
+        itemsGrid.innerHTML = items.map(item => `
+            <div class="item-card fade-in-up">
+                <img src="${item.image}" alt="${item.title}" class="item-image">
+                <div class="item-info">
+                    <h3 class="item-title">${item.title}</h3>
+                    <p class="item-description">${item.description}</p>
+                    <div class="item-meta">
+                        <span class="item-price">₹${item.price}</span>
+                        <span class="item-condition">${item.condition}</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="viewItem(${item.id})">
+                        <i class="fas fa-eye"></i>
+                        View Details
+                    </button>
                 </div>
-                <button class="btn btn-primary" onclick="viewItem(${item.id})">
-                    <i class="fas fa-eye"></i>
-                    View Details
-                </button>
             </div>
-        </div>
-    `).join('');
+        `).join('');
+        
+        console.log(`Displayed ${items.length} items`);
+    } catch (error) {
+        console.error('Error displaying items:', error);
+    }
 }
 
 function loadMoreItems() {
@@ -285,32 +324,43 @@ function showAllItems() {
 
 // Load Contributors
 function loadContributors() {
-    const contributorsTimeline = document.getElementById('contributorsTimeline');
-    
-    contributorsTimeline.innerHTML = mockData.contributors.map(contributor => `
-        <div class="contributor-card fade-in-up">
-            <div class="contributor-rank">#${contributor.rank}</div>
-            <div class="contributor-header">
-                <img src="${contributor.avatar}" alt="${contributor.name}" class="contributor-avatar">
-                <div class="contributor-info">
-                    <h4>${contributor.name}</h4>
-                    <div class="contributor-stats">
-                        ${contributor.specialty} • Since ${formatDate(contributor.joinDate)}
+    try {
+        const contributorsTimeline = document.getElementById('contributorsTimeline');
+        
+        if (!contributorsTimeline) {
+            console.log('Contributors timeline not found - skipping (normal for pages without contributors section)');
+            return;
+        }
+        
+        contributorsTimeline.innerHTML = mockData.contributors.map(contributor => `
+            <div class="contributor-card fade-in-up">
+                <div class="contributor-rank">#${contributor.rank}</div>
+                <div class="contributor-header">
+                    <img src="${contributor.avatar}" alt="${contributor.name}" class="contributor-avatar">
+                    <div class="contributor-info">
+                        <h4>${contributor.name}</h4>
+                        <div class="contributor-stats">
+                            ${contributor.specialty} • Since ${formatDate(contributor.joinDate)}
+                        </div>
+                    </div>
+                </div>
+                <div class="contributor-contributions">
+                    <div>
+                        <div class="contribution-count">${contributor.totalDonations}</div>
+                        <div class="contribution-label">Donations</div>
+                    </div>
+                    <div>
+                        <div class="contribution-count">₹${contributor.totalValue}</div>
+                        <div class="contribution-label">Total Value</div>
                     </div>
                 </div>
             </div>
-            <div class="contributor-contributions">
-                <div>
-                    <div class="contribution-count">${contributor.totalDonations}</div>
-                    <div class="contribution-label">Donations</div>
-                </div>
-                <div>
-                    <div class="contribution-count">₹${contributor.totalValue}</div>
-                    <div class="contribution-label">Total Value</div>
-                </div>
-            </div>
-        </div>
-    `).join('');
+        `).join('');
+        
+        console.log('Contributors loaded successfully');
+    } catch (error) {
+        console.error('Error loading contributors:', error);
+    }
 }
 
 // Utility Functions
@@ -479,7 +529,7 @@ function becomeContributor() {
     // Add event listener for the form
     setTimeout(() => {
         const contributorForm = document.getElementById('contributorForm');
-        if (contributorForm && typeof contributorForm.addEventListener === 'function') {
+        if (contributorForm) {
             contributorForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(e.target);
@@ -627,26 +677,14 @@ function showToast(message, type = 'info') {
 
 // Smooth Scrolling
 function setupSmoothScrolling() {
-    const anchors = document.querySelectorAll('a[href^="#"]');
-    if (anchors.length === 0) {
-        console.error('No anchor links with href starting with "#" found for smooth scrolling.');
-        return;
-    }
-    
-    anchors.forEach((anchor, index) => {
-        if (anchor && typeof anchor.addEventListener === 'function') {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                } else {
-                    console.error(`Target element for anchor link not found: ${this.getAttribute('href')}`);
-                }
-            });
-        } else {
-            console.error(`Anchor element at index ${index} is null or doesn't support addEventListener.`);
-        }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
     });
 }
 
@@ -701,11 +739,24 @@ function shareItem(itemId) {
 
 // Initialize cart badge
 function updateCartBadge() {
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const badge = document.querySelector('.cart-badge');
-    if (badge) {
-        badge.textContent = cart.length;
-        badge.style.display = cart.length > 0 ? 'block' : 'none';
+    try {
+        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+        const badge = document.querySelector('.cart-badge');
+        if (badge) {
+            badge.textContent = cart.length;
+            badge.style.display = cart.length > 0 ? 'block' : 'none';
+            console.log('Cart badge updated');
+        } else {
+            // Try alternative selector
+            const cartCount = document.getElementById('cartCount');
+            if (cartCount) {
+                cartCount.textContent = cart.length;
+                cartCount.style.display = cart.length > 0 ? 'block' : 'none';
+                console.log('Cart count updated');
+            }
+        }
+    } catch (error) {
+        console.error('Error updating cart badge:', error);
     }
 }
 
@@ -786,35 +837,25 @@ const donationFeatures = {
         const materialCategories = document.querySelectorAll('.material-category');
         
         materialCategories.forEach(category => {
-            if (category && typeof category.addEventListener === 'function') {
-                const categoryIcon = category.querySelector('.category-icon');
-                const materialItems = category.querySelectorAll('.material-item');
-                
-                // Add hover effects
-                category.addEventListener('mouseenter', () => {
-                    if (categoryIcon) {
-                        categoryIcon.style.animation = 'pulse 0.5s ease-in-out';
-                    }
-                    materialItems.forEach((item, index) => {
-                        setTimeout(() => {
-                            if (item) {
-                                item.style.transform = 'translateX(5px)';
-                            }
-                        }, index * 50);
-                    });
+            const categoryIcon = category.querySelector('.category-icon');
+            const materialItems = category.querySelectorAll('.material-item');
+            
+            // Add hover effects
+            category.addEventListener('mouseenter', () => {
+                categoryIcon.style.animation = 'pulse 0.5s ease-in-out';
+                materialItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.transform = 'translateX(5px)';
+                    }, index * 50);
                 });
-                
-                category.addEventListener('mouseleave', () => {
-                    if (categoryIcon) {
-                        categoryIcon.style.animation = 'pulse 2s ease-in-out infinite';
-                    }
-                    materialItems.forEach(item => {
-                        if (item) {
-                            item.style.transform = 'translateX(0)';
-                        }
-                    });
+            });
+            
+            category.addEventListener('mouseleave', () => {
+                categoryIcon.style.animation = 'pulse 2s ease-in-out infinite';
+                materialItems.forEach(item => {
+                    item.style.transform = 'translateX(0)';
                 });
-            }
+            });
         });
     },
 
@@ -823,23 +864,21 @@ const donationFeatures = {
         const statHighlights = document.querySelectorAll('.stat-highlight');
         
         statHighlights.forEach(stat => {
-            if (stat && typeof stat.addEventListener === 'function') {
-                const statNumber = stat.querySelector('.stat-number');
-                const originalNumber = statNumber ? statNumber.textContent : '';
+            const statNumber = stat.querySelector('.stat-number');
+            const originalNumber = statNumber.textContent;
+            
+            stat.addEventListener('mouseenter', () => {
+                stat.style.animation = 'none';
+                stat.style.transform = 'translateY(-10px) scale(1.05)';
                 
-                stat.addEventListener('mouseenter', () => {
-                    stat.style.animation = 'none';
-                    stat.style.transform = 'translateY(-10px) scale(1.05)';
-                    
-                    // Add sparkle effect
-                    this.addSparkleEffect(stat);
-                });
-                
-                stat.addEventListener('mouseleave', () => {
-                    stat.style.transform = 'translateY(0) scale(1)';
-                    this.removeSparkleEffect(stat);
-                });
-            }
+                // Add sparkle effect
+                this.addSparkleEffect(stat);
+            });
+            
+            stat.addEventListener('mouseleave', () => {
+                stat.style.transform = 'translateY(0) scale(1)';
+                this.removeSparkleEffect(stat);
+            });
         });
     },
 
@@ -876,45 +915,41 @@ const donationFeatures = {
         const buttons = document.querySelectorAll('.btn');
         
         buttons.forEach(button => {
-            if (button && typeof button.addEventListener === 'function') {
-                button.addEventListener('mouseenter', () => {
-                    button.style.transform = 'translateY(-2px) scale(1.02)';
-                });
+            button.addEventListener('mouseenter', () => {
+                button.style.transform = 'translateY(-2px) scale(1.02)';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translateY(0) scale(1)';
+            });
+            
+            button.addEventListener('click', (e) => {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = button.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
                 
-                button.addEventListener('mouseleave', () => {
-                    button.style.transform = 'translateY(0) scale(1)';
-                });
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
                 
-                button.addEventListener('click', (e) => {
-                    // Create ripple effect
-                    const ripple = document.createElement('span');
-                    const rect = button.getBoundingClientRect();
-                    const size = Math.max(rect.width, rect.height);
-                    const x = e.clientX - rect.left - size / 2;
-                    const y = e.clientY - rect.top - size / 2;
-                    
-                    ripple.style.cssText = `
-                        position: absolute;
-                        width: ${size}px;
-                        height: ${size}px;
-                        left: ${x}px;
-                        top: ${y}px;
-                        background: rgba(255, 255, 255, 0.3);
-                        border-radius: 50%;
-                        transform: scale(0);
-                        animation: ripple 0.6s linear;
-                        pointer-events: none;
-                    `;
-                    
-                    button.appendChild(ripple);
-                    
-                    setTimeout(() => {
-                        if (ripple && ripple.parentNode) {
-                            ripple.remove();
-                        }
-                    }, 600);
-                });
-            }
+                button.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
         });
     },
 
@@ -922,14 +957,12 @@ const donationFeatures = {
     init: function() {
         // Wait for DOM to be fully loaded
         if (document.readyState === 'loading') {
-            if (document && typeof document.addEventListener === 'function') {
-                document.addEventListener('DOMContentLoaded', () => {
-                    this.setupScrollAnimations();
-                    this.setupMaterialInteractions();
-                    this.setupStatisticsInteractions();
-                    this.setupButtonInteractions();
-                });
-            }
+            document.addEventListener('DOMContentLoaded', () => {
+                this.setupScrollAnimations();
+                this.setupMaterialInteractions();
+                this.setupStatisticsInteractions();
+                this.setupButtonInteractions();
+            });
         } else {
             this.setupScrollAnimations();
             this.setupMaterialInteractions();
@@ -965,14 +998,70 @@ document.head.appendChild(styleSheet);
 donationFeatures.init();
 
 document.addEventListener('DOMContentLoaded', function() {
-    initializeTheme();
-    setupEventListeners();
-    loadFeaturedItems();
-    loadContributors();
-    setupSmoothScrolling();
-    setupScrollAnimations();
-    setupMissionAnimations();
-    updateCartBadge(); // moved here
+    try {
+        console.log('DOM Content Loaded - Initializing EcoMarket...');
+        
+        // Initialize theme first
+        try {
+            initializeTheme();
+            console.log('Theme initialized');
+        } catch (error) {
+            console.error('Error initializing theme:', error);
+        }
+        
+        // Setup event listeners
+        try {
+            setupEventListeners();
+        } catch (error) {
+            console.error('Error setting up event listeners:', error);
+        }
+        
+        // Load page content
+        try {
+            loadFeaturedItems();
+        } catch (error) {
+            console.warn('Error loading featured items:', error);
+        }
+        
+        try {
+            loadContributors();
+        } catch (error) {
+            console.warn('Error loading contributors:', error);
+        }
+        
+        // Setup smooth scrolling
+        try {
+            setupSmoothScrolling();
+        } catch (error) {
+            console.warn('Error setting up smooth scrolling:', error);
+        }
+        
+        // Setup scroll animations
+        try {
+            setupScrollAnimations();
+        } catch (error) {
+            console.warn('Error setting up scroll animations:', error);
+        }
+        
+        // Setup mission animations
+        try {
+            setupMissionAnimations();
+        } catch (error) {
+            console.warn('Error setting up mission animations:', error);
+        }
+        
+        // Update cart badge
+        try {
+            updateCartBadge();
+        } catch (error) {
+            console.warn('Error updating cart badge:', error);
+        }
+        
+        console.log('EcoMarket initialization completed successfully');
+        
+    } catch (error) {
+        console.error('Critical error during initialization:', error);
+    }
 });
 
 // Scroll Animations
