@@ -281,21 +281,13 @@ function loadFeaturedItems() {
 
 function displayItems(items) {
     try {
-    const itemsGrid = document.getElementById('itemsGrid') || document.getElementById('productsGrid');
-
-    if (!itemsGrid) {
-        console.log('Items grid not found - skipping display (normal for pages without item grid)');
-        return;
-    }
-
-    console.log('Items grid found — loading products');
-    // your product loading code here
-
-} catch (error) {
-    console.error('Error initializing items grid:', error);
-}
-
-
+        const itemsGrid = document.getElementById('itemsGrid');
+        
+        if (!itemsGrid) {
+            console.log('Items grid not found - skipping display (normal for pages without item grid)');
+            return;
+        }
+        
         itemsGrid.innerHTML = items.map(item => `
             <div class="item-card fade-in-up">
                 <img src="${item.image}" alt="${item.title}" class="item-image">
@@ -1168,5 +1160,3 @@ function animateMissionCounters() {
         }, index * 100);
     });
 }
-
-
