@@ -269,6 +269,9 @@ const shopProducts = [
         quantity: 5
     }
 ];
+// Make shopProducts globally available for script.js compatibility
+window.shopProducts = shopProducts;
+
 // Shop state management
 let currentProducts = [...shopProducts];
 let displayedProducts = [];
@@ -539,7 +542,9 @@ function applyFilters() {
     currentPage = 0;
     loadProducts();
     
-    showToast('Filters applied successfully!', 'success');
+    if (window.showToast) {
+        window.showToast('Filters applied successfully!', 'success');
+    }
 }
 
 function sortProducts(products, sortBy) {
