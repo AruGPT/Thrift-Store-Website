@@ -1,20 +1,21 @@
 // Shop Page JavaScript
 // Shop Page JavaScript
 
-// Shop Notice Popup functionality
+// Shop Notice Popup functionality - DISABLED to show products
+// Products are now available for purchase
 document.addEventListener('DOMContentLoaded', function() {
     const shopNoticeOverlay = document.getElementById('shopNoticeOverlay');
     const shopNoticeClose = document.getElementById('shopNoticeClose');
     const shopNoticeUnderstood = document.getElementById('shopNoticeUnderstood');
     
-    // Show popup after a slight delay
-    setTimeout(() => {
-        if (shopNoticeOverlay) {
-            shopNoticeOverlay.classList.add('show');
-        }
-    }, 1500); // 1.5 second delay
+    // DISABLED: Don't show popup automatically - products are available
+    // setTimeout(() => {
+    //     if (shopNoticeOverlay) {
+    //         shopNoticeOverlay.classList.add('show');
+    //     }
+    // }, 1500); // 1.5 second delay
     
-    // Close popup functions
+    // Close popup functions (keep for manual testing if needed)
     function closeShopNotice() {
         if (shopNoticeOverlay) {
             shopNoticeOverlay.classList.remove('show');
