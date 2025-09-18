@@ -288,6 +288,11 @@ function displayItems(items) {
             return;
         }
         
+        // Don't interfere with shop page
+        if (window.location.pathname.includes('shop.html')) {
+            return;
+        }
+        
         itemsGrid.innerHTML = items.map(item => `
             <div class="item-card fade-in-up">
                 <img src="${item.image}" alt="${item.title}" class="item-image">
@@ -751,7 +756,7 @@ function updateCartBadge() {
             const cartCount = document.getElementById('cartCount');
             if (cartCount) {
                 cartCount.textContent = cart.length;
-                cartCount.style.display = cart.length > 0 ? 'block' : 'none';
+                cartCount.style.display = cart.length > 0 ? 'inline' : 'inline';
                 console.log('Cart count updated');
             }
         }
@@ -760,6 +765,64 @@ function updateCartBadge() {
     }
 }
 
+
+// Make updateCartBadge globally available for shop.js
+window.updateCartCount = updateCartBadge;
+
+// Make showToast globally available for shop.js
+window.showToast = showToast;
+
+// Add missing global functions for shop.js compatibility
+window.addToCart = function(itemId) {
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    if (!cart.includes(itemId)) {
+        cart.push(itemId);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        showToast('Item added to cart!', 'success');
+        updateCartBadge();
+    } else {
+        showToast('Item already in cart!', 'info');
+    }
+};
+
+window.rentProduct = function(itemId) {
+    showToast('Rental functionality coming soon!', 'info');
+};
+
+window.openQuickView = function(itemId) {
+    // Find product in shopProducts array from shop.js
+    if (window.shopProducts) {
+        const product = window.shopProducts.find(p => p.id === itemId);
+        if (product) {
+            const modalContent = `
+                <h2>${product.title}</h2>
+                <img src="${product.image}" alt="${product.title}" style="width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px; margin: 1rem 0;">
+                <p><strong>Price:</strong> ₹${product.price}</p>
+                <p><strong>Condition:</strong> ${product.condition}</p>
+                <p><strong>Category:</strong> ${product.category}</p>
+                <p><strong>Material:</strong> ${product.material}</p>
+                <p><strong>Rating:</strong> ${product.rating}/5</p>
+                <p><strong>Description:</strong> ${product.description}</p>
+                <p><strong>Impact:</strong> ${product.impact}</p>
+                <div style="margin-top: 2rem;">
+                    <button class="btn btn-primary" onclick="addToCart(${itemId})">
+                        <i class="fas fa-cart-plus"></i>
+                        Add to Cart
+                    </button>
+                    <button class="btn btn-outline" onclick="rentProduct(${itemId})">
+                        <i class="fas fa-clock"></i>
+                        Rent Now
+                    </button>
+                </div>
+            `;
+            showModal(modalContent);
+        }
+    }
+};
+
+window.closeQuickView = function() {
+    closeModal();
+};
 // Enhanced JavaScript for Donate Page Animations and Interactions
 
 // Donation-specific functionality
